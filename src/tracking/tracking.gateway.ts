@@ -16,7 +16,7 @@ export class TrackingGateway {
 
   constructor(private readonly trackingService: TrackingService) {}
 
-  @SubscribeMessage('pushLocation')
+  @SubscribeMessage('send_location')
   async handlePushLocation(
     @ConnectedSocket() client: Socket,
     @MessageBody() dto: CreateTrackingDto,
@@ -24,15 +24,11 @@ export class TrackingGateway {
     try {
       const trackingData = await this.trackingService.pushLocation(dto);
 
-      // Emit update to all clients
       this.server.emit(`locationUpdate:${dto.vehicleId}`, trackingData);
 
-      // Send success response back to the sender
       return { status: 'success', data: trackingData };
     } catch (error) {
       console.error('Error in pushLocation:', error.message);
-
-      // Send error response to the client that sent the request
       return { status: 'error', message: error.message };
     }
   }
