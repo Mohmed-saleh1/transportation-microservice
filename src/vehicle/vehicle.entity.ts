@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { VehicleType, VehicleStatus } from './vehicle.types';
 import { Trip } from 'src/trips/trip.entity';
+import { Tracking } from 'src/tracking/tracking.entity';
 
 @Entity()
 export class Vehicle {
@@ -50,6 +51,9 @@ export class Vehicle {
 
   @OneToMany(() => Trip, (trip) => trip.vehicle, { cascade: true })
   trips: Trip[];
+
+  @OneToMany(() => Tracking, (tracking) => tracking.vehicle, { cascade: true })
+  trackings: Tracking[];
 
   @CreateDateColumn()
   createdAt: Date;
