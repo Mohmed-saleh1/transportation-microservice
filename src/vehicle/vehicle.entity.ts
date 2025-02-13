@@ -4,8 +4,10 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { VehicleType, VehicleStatus } from './vehicle.types';
+import { Trip } from 'src/trips/trip.entity';
 
 @Entity()
 export class Vehicle {
@@ -45,6 +47,9 @@ export class Vehicle {
 
   @Column({ nullable: true })
   imageUrl: string;
+
+  @OneToMany(() => Trip, (trip) => trip.vehicle, { cascade: true })
+  trips: Trip[];
 
   @CreateDateColumn()
   createdAt: Date;
