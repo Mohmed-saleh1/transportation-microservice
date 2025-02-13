@@ -4,12 +4,14 @@ import { Repository } from 'typeorm';
 import { Vehicle } from './vehicle.entity';
 import { CreateVehicleDto } from './dtos/create-vehicle.dto';
 import { UpdateVehicleDto } from './dtos/update-vehicle.dto';
+import { Logger } from 'winston';
 
 @Injectable()
 export class VehicleService {
   constructor(
     @InjectRepository(Vehicle)
     private readonly vehicleRepository: Repository<Vehicle>,
+    private readonly logger: Logger,
   ) {}
 
   async createVehicle(createVehicleDto: CreateVehicleDto): Promise<Vehicle> {
