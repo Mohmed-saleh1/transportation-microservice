@@ -80,6 +80,8 @@ export class VehicleController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth('JWT')
+  @UseGuards(JwtAuthGuard, AdminGuard)
   @ApiOperation({ summary: 'Remove a vehicle (Admin only)' })
   @ApiResponse({ status: 204, description: 'Vehicle removed successfully' })
   @ApiResponse({ status: 404, description: 'Vehicle not found' })
