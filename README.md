@@ -52,11 +52,11 @@ src
 │   │── auth.types.ts
 │
 │── common
-|   |    │── core
-|   |     │   │── database
-|   |     │   │   │── database.module.ts
-|   |     │   │── swagger
-|   |     │   │   │── swagger.module.ts
+|   |── core
+|   |   │── database
+|   |   │   │── database.module.ts
+|   |   │── swagger
+|   |   │   │── swagger.module.ts
 │   │── guards
 │   │   │── admin.guard.ts
 │   │   │── jwt-auth.guard.ts
