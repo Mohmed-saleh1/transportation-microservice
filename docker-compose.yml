@@ -3,7 +3,8 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: nestjs-api
+    container_name: nestjs_transport_service
+    restart: always
     ports:
       - '3000:3000'
     env_file:
@@ -12,19 +13,19 @@ services:
       - .:/app
       - /app/node_modules
     depends_on:
-      - database
+      - db
     command: npm run start:prod
 
-  database:
+  db:
     image: postgres:15-alpine
     container_name: postgres-db
     restart: always
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: transport_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

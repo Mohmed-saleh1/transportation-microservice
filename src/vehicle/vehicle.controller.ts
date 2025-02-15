@@ -18,8 +18,8 @@ import { VehicleService } from './vehicle.service';
 import { CreateVehicleDto } from './dtos/create-vehicle.dto';
 import { Vehicle } from './vehicle.entity';
 import { UpdateVehicleDto } from './dtos/update-vehicle.dto';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { AdminGuard } from 'src/auth/guards/admin.guard';
+import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
+import { AdminGuard } from 'src/common/guards/admin.guard';
 
 @ApiTags('Vehicles')
 @Controller('vehicles')
